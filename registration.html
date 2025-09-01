@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body style="background-image: url(https://www.collegegyani.com/upload/abes.jpeg); background-size: cover; background-attachment: fixed;">
+    <div class="form-container" style="border: 1px solid grey; padding: 20px; background-color: white; border-radius: 10px; color: black; width: 300px; opacity: 0.8; margin: 70px auto ; padding:20px;" >
+    <form name="f1" action="reg.html" method="get">
+        <h2 align="center">Registration</h2>
+        <table style="width: 100%;">
+            <tr>
+                <td>Name:</td>
+                <td><input type="required" style="border: 5px solid skyblue; width: 100%;" maxlength="50"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="required" style="border: 5px solid skyblue; width: 100%;" maxlength="50"
+                name="email" placeholder="Enter your email"></td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td><input type="required" style="border: 5px solid skyblue; width: 100%;" maxlength="15"
+                name="phone" placeholder="Enter your phone number"></td>
+            </tr>
+                <tr>
+                <td>Gender:</td>
+                <td>
+                Male <input type="radio" name="gender" value="male">
+                Female <input type="radio" name="gender" value="female"></td>
+            </tr>
+                <td>Date Of Birth:</td>
+                <td><input type="data"
+                style="border: 5px solid skyblue; width: 100%;" maxlength="50" ></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="required" style="border: 5px solid skyblue; width: 100%;" maxlength="10"
+                name="password" placeholder="Enter your password"></td>
+            </tr>
+            <tr>
+                <td>Language known:</td>
+                <td><textarea name="Language known" rows="2" style="border: 5px solid skyblue; width:
+                100%;"></textarea></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><textarea name="address" rows="2" style="border: 5px solid skyblue; width:
+                100%;"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                <a href="reg.html"><button style="margin-top: 5px; background-color:orange;color:white">Submit</button></a>
+                <button type="reset" style="margin-top: 5px; background-color:orange;color:white">Reset</button>
+                <button style="margin-top: 5px; background-color:orange;color:white">clear</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    </div>
+</body>
+</html>
