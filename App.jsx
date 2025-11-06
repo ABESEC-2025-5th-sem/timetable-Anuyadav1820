@@ -1,49 +1,73 @@
-import React, { useState } from "react";
-
-function App() {
-  
-  const images = [
-  "https://picsum.photos/id/1011/400/200",
-  "https://picsum.photos/id/1015/400/200",
-  "https://picsum.photos/id/1016/400/200",
-  "https://picsum.photos/id/1020/400/200",
-  "https://picsum.photos/id/1024/400/200"
-];
+ import React, { useState } from 'react';
+import productsData from './assets/product.json';
+import './index.css';
 
 
-  
-  const [currentIndex, setCurrentIndex] = useState(0);
+const Header = () => <header className="header">My Store</header>;
 
-  
-  const prev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
 
-  
-  const next = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+const Search = ({ onSearch }) => {
+  const [query, setQuery] = useState('');
+
+  const handleSearch = () => {
+    onSearch(query);
   };
 
   return (
-    <div className="img-slider" style={{ textAlign: "center" }}>
-      <h1>Image Slider Component</h1>
-      <img
-        src={images[currentIndex]}
-        alt={`Slide ${currentIndex + 1}`}
-        style={{ width: "400px", height: "200px", marginBottom: "10px" }}
+    <div className="search">
+      <input
+        type="text"
+        placeholder="Search product..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
-      <div className="slider-btns">
-        <button onClick={prev} style={{ marginRight: "10px" }}>
-          Left
-        </button>
-        <button onClick={next}>Right</button>
-      </div>
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
-}
+};
+
+// -------- Product --------
+const Product = ({ products }) => {
+  return (
+    <div className="product-list">
+      {products.length > 0 ? (
+        products.map((item) => (
+          <div key={item.id} className="product-card">
+            <img src={item.image} alt={item.name} />
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+            <p>{item.price}</p>
+          </div>
+        ))
+      ) : (
+        <p>No products found.</p>
+      )}
+    </div>
+  );
+};
+
+// -------- Footer --------
+const Footer = () => <footer className="footer">© 2025 My Store</footer>;
+
+// -------- App --------
+const App = () => {
+  const [products, setProducts] = useState(productsData);
+
+  const handleSearch = (query) => {
+    const filtered = productsData.filter((p) =>
+      p.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setProducts(filtered);
+  };
+
+  return (
+    <div className="app">
+      <Header />
+      <Search onSearch={handleSearch} />
+      <Product products={products} />
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
